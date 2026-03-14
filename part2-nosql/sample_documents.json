@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "ELEC001",
+    "name": "Samsung Galaxy S23",
+    "category": "Electronics",
+    "price": 45000,
+    "warranty_months": 24,
+    "voltage": "5V",
+    "specifications": {
+      "processor": "Snapdragon 8 Gen 2",
+      "ram_gb": 8,
+      "storage_gb": 256
+    }
+  },
+  {
+    "_id": "CLOTH001",
+    "name": "Cotton T-Shirt",
+    "category": "Clothing",
+    "price": 599,
+    "size": "M",
+    "color": "Blue",
+    "material": "100% Cotton",
+    "care_instructions": ["Machine wash cold", "Tumble dry low"]
+  },
+  {
+    "_id": "GROC001",
+    "name": "Basmati Rice 5kg",
+    "category": "Groceries",
+    "price": 450,
+    "expiry_date": "2025-12-31",
+    "nutrition": {
+      "calories_per_100g": 130,
+      "protein_g": 3,
+      "carbs_g": 28
+    }
+  }
+]
