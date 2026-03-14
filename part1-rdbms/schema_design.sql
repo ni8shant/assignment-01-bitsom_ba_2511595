@@ -1,0 +1,2 @@
+-- Part 1: RDBMS Schema Design
+-- Normalized 3NF schema
