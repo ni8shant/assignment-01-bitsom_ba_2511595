@@ -1,0 +1,5 @@
+-- Q1: List all customers from Mumbai along with their total order value
+-- Q2: Find the top 3 products by total quantity sold
+-- Q3: List all sales representatives and the number of unique customers they handled
+-- Q4: Find all orders where the total value exceeds 10,000, sorted by value descending
+-- Q5: Identify any products that have never been ordered
