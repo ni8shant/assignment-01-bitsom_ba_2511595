@@ -1,0 +1,65 @@
+HOSPITAL DATA ARCHITECTURE DIAGRAM
+====================================
+
+This file describes the architecture that should be visualized in architecture_diagram.png
+
+COMPONENTS:
+-----------
+
+1. DATA SOURCES (Left side):
+   - Patient Admission System (OLTP)
+   - ICU Monitoring Devices (Streaming)
+   - Historical Patient Records (Batch)
+
+2. INGESTION LAYER (Center-Left):
+   - Apache Kafka (for real-time streaming from ICU devices)
+   - Batch ETL Pipeline (for historical patient records)
+   - API Gateway (for admission system)
+
+3. STORAGE LAYER (Center):
+   - OPERATIONAL DATABASE: Azure SQL / AWS RDS
+     * Patient records
+     * Real-time vital signs
+     * Transactional consistency
+   
+   - DATA WAREHOUSE: Snowflake / Redshift
+     * Fact tables: patient_admissions, treatments, costs
+     * Dimension tables: date, location, department
+     * Monthly aggregations
+   
+   - DATA LAKE: S3 / Azure Blob Storage
+     * Parquet files with historical treatment data
+     * Raw patient records for ML training
+   
+   - VECTOR DATABASE: Pinecone / Weaviate
+     * Embeddings of patient history documents
+     * For semantic search
+
+4. PROCESSING LAYER (Center-Right):
+   - ETL/ELT Jobs (nightly/hourly)
+   - ML Training Pipeline (Sklearn/TensorFlow)
+   - Event Streaming (Kafka)
+
+5. APPLICATION LAYER (Right side):
+   - ML Model: Readmission Risk Predictor
+   - BI/Reporting Dashboard (for management)
+   - Semantic Search API (for doctor queries)
+   - Real-time Alerts (for critical vitals)
+
+DATA FLOW:
+----------
+- Patient data → OLTP DB (immediate)
+- ICU vitals → Kafka → OLTP DB (real-time)
+- Periodic ETL → Data Warehouse (nightly)
+- Historical data → Data Lake (batch)
+- Doctor queries → Vector DB (semantic search)
+- Reports → BI Dashboard (scheduled)
+
+OLTP vs OLAP BOUNDARY:
+- OLTP: All source systems and operational database (left side)
+- OLAP: Data warehouse, data lake, vector DB (center/right)
+- ETL pipelines cross the boundary (shown as arrows)
+
+TO CREATE THE DIAGRAM:
+Use draw.io, Lucidchart, or Excalidraw with the components and flow described above.
+Export as PNG and save as architecture_diagram.png in this directory.
